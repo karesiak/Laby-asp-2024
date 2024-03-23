@@ -26,11 +26,14 @@ namespace Lab_1_2024.Controllers
         {
             return View();
         }
-        public IActionResult Calculator()
+        public IActionResult Calculator(Operator op)
         {
-            string op = Request.Query["op"];
             ViewBag.Op = op;
             return View();
+        }
+        public enum Operator
+        {
+            Add, Mul, Sub, Div, Unknow
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
