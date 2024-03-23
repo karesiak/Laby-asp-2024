@@ -26,9 +26,57 @@ namespace Lab_1_2024.Controllers
         {
             return View();
         }
-        public IActionResult Calculator(Operator op)
+        public IActionResult Calculator(string op, double? a, double? b)
         {
-            ViewBag.Op = op;
+            // Przygotowanie wyniku do wyświetlenia
+            string result;
+
+            // Sprawdzanie, czy parametry a i b są dostarczone
+            if (a.HasValue && b.HasValue)
+            {
+                double calculationResult = 0;
+                bool validOperation = true;
+
+                // Wykonywanie obliczeń w zależności od operatora
+                switch (op)
+                {
+                    case "add":
+                        calculationResult = a.Value + b.Value;
+                        break;
+                    case "sub":
+                        calculationResult = a.Value - b.Value;
+                        break;
+                    case "mul":
+                        calculationResult = a.Value * b.Value;
+                        break;
+                    case "div":
+                        // Dodatkowe sprawdzenie, aby uniknąć dzielenia przez zero
+                        calculationResult = b.Value != 0 ? a.Value / b.Value : double.NaN;
+                        break;
+                    default:
+                        validOperation = false;
+                        break;
+                }
+
+                if (validOperation)
+                {
+                    // Przygotowanie tekstu wyniku dla poprawnej operacji
+                    result = $"Wynik działania dla {a} {op} {b} = {calculationResult}";
+                }
+                else
+                {
+                    // Komunikat o nieznanej operacji
+                    result = "Nieznana operacja";
+                }
+            }
+            else
+            {
+                // Komunikat o brakujących parametrach
+                result = "Brakujące parametry a lub b";
+            }
+
+            // Przekazanie wyniku do widoku
+            ViewBag.Result = result;
             return View();
         }
         public enum Operator
