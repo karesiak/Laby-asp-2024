@@ -30,7 +30,7 @@
             public bool IsValid()
             {
                 return Operator.HasValue && X.HasValue && Y.HasValue &&
-                       !(Operator == Operators.Div && Y == 0); // Check for division by zero
+                       !(Operator == Operators.Div && Y == 0); 
             }
 
             public double Calculate()
@@ -40,7 +40,7 @@
                     Operators.Add => X.Value + Y.Value,
                     Operators.Sub => X.Value - Y.Value,
                     Operators.Mul => X.Value * Y.Value,
-                    Operators.Div => Y.Value != 0 ? X.Value / Y.Value : double.NaN, // Check for division by zero
+                    Operators.Div => Y.Value != 0 ? X.Value / Y.Value : double.NaN, 
                     _ => double.NaN
                 };
             }
