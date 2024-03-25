@@ -15,6 +15,7 @@
             <th>Karta Graficzna</th>
             <th>Producent</th>
             <th>Data Produkcji</th>
+            <th>Akcje</th> 
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,14 @@
                 <td>@item.Value.GraphicsCard</td>
                 <td>@item.Value.Manufacturer</td>
                 <td>@item.Value.ProductionDate.ToShortDateString()</td>
+                <td>
+                   
+                    <a asp-action="Edit" asp-controller="Computer" asp-route-id="@item.Key" class="btn btn-primary">Edytuj</a>
+                    <form asp-action="Delete" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@item.Key" />
+                        <button type="submit" class="btn btn-danger">Usuń</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

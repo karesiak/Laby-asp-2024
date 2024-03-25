@@ -1,0 +1,15 @@
+﻿@model Laboratorium_2.Models.Computer
+
+@{
+    ViewData["Title"] = "Usuń Komputer";
+}
+
+<h2>Usuń Komputer</h2>
+
+<div>
+    <h4>Czy na pewno chcesz usunąć komputer o nazwie "@Model.Name"?</h4>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Usuń</button> | <a asp-action="Index">Anuluj</a>
+    </form>
+</div>

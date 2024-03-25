@@ -36,5 +36,67 @@ namespace Laboratorium_2.Controllers
                 return View(computer);
             }
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            if (_computers.ContainsKey(id))
+            {
+                return View(_computers[id]);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, Computer computer)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_computers.ContainsKey(id))
+                {
+                    _computers[id] = computer;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return View(computer);
+            }
+        }
+
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            if (_computers.ContainsKey(id))
+            {
+                return View(_computers[id]);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            if (_computers.ContainsKey(id))
+            {
+                _computers.Remove(id);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
