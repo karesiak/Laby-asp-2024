@@ -1,0 +1,47 @@
+﻿@model Laboratorium_2.Models.Computer
+
+@{
+    ViewData["Title"] = "Dodaj komputer";
+}
+
+<form asp-action="Create" asp-controller="Computer" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name">Nazwa komputera</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Processor">Procesor</label>
+        <input class="form-control" asp-for="Processor" />
+        <span asp-validation-for="Processor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Memory">Pamięć RAM</label>
+        <input class="form-control" asp-for="Memory" />
+        <span asp-validation-for="Memory" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GraphicsCard">Karta graficzna</label>
+        <input class="form-control" asp-for="GraphicsCard" />
+        <span asp-validation-for="GraphicsCard" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Manufacturer">Producent</label>
+        <input class="form-control" asp-for="Manufacturer" />
+        <span asp-validation-for="Manufacturer" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProductionDate">Data produkcji</label>
+        <input class="form-control" type="date" asp-for="ProductionDate" />
+        <span asp-validation-for="ProductionDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>

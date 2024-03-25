@@ -1,0 +1,33 @@
+﻿@model Dictionary<int, Laboratorium_2.Models.Computer>
+
+@{
+    ViewData["Title"] = "Lista Komputerów";
+}
+
+<h2>Lista Komputerów</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Procesor</th>
+            <th>Pamięć RAM</th>
+            <th>Karta Graficzna</th>
+            <th>Producent</th>
+            <th>Data Produkcji</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Value.Name</td>
+                <td>@item.Value.Processor</td>
+                <td>@item.Value.Memory</td>
+                <td>@item.Value.GraphicsCard</td>
+                <td>@item.Value.Manufacturer</td>
+                <td>@item.Value.ProductionDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
